@@ -7,29 +7,53 @@
 		-webkit-transform-style
 		-webkit-backface-visibility
 */
- 
- .portfolio {
- 	position: relative;
- }
 
-.back {
+/*
+	Put your custom CSS here.
+	You may find these CSS3 properties useful:;
+		transition
+		-webkit-transform
+		-webkit-transform-style
+		-webkit-backface-visibility
+*/
+ 
+ .portfolio-item {
 	position: relative;
+	width: 200px;
+	height: 200px;
+	perspective: 1000;
 }
 
 .front {
+	z-index: 1;
 	position: absolute;
+	backface-visibility: hidden;
+	transform: rotateY(0deg);
+	-moz-transition:  .9s ease-out;
+    -webkit-transition:  .9s ease-out;
+    -o-transition:  .9s ease-out;
 }
 
-.front,.back {
-	  transform-style: preserve-3d;
-  	transition: transform 3s;
-   }
-
-.portfolio-item:hover > .front {
-  	transform: rotateY( 0deg );
-
+.back {
+	position: absolute;
+	z-index: 0;
+	backface-visibility: hidden;
+	transform: rotateY(-180deg);
+	-moz-transition:  .9s ease-out;
+    -webkit-transition:  .9s ease-out;
+    -o-transition:  .9s ease-out;
 }
-.portfolio-item:hover > .back {
-  	transform: rotateY( 360deg );
-  	backface-visibility: hidden;
-  }
+
+.portfolio-item:hover .front {
+	transform: rotateY(180deg);
+    -moz-transition:  .9s ease-out;
+    -webkit-transition:  .9s ease-out;
+    -o-transition:  .9s ease-out;
+}
+
+.portfolio-item:hover .back {
+	transform: rotateY(0deg);
+    -moz-transition:  .9s ease-out;
+    -webkit-transition:  .9s ease-out;
+    -o-transition:  .9s ease-out;
+}
